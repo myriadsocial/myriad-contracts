@@ -1,0 +1,25 @@
+[package]
+name = "tipping-contract"
+version = "0.1.0"
+edition = "2021"
+license = 'AGPL-3.0'
+authors = ["Abdul Hakim <hakim@blocksphere.id>"]
+homepage = 'https://myriad.social'
+repository = 'https://github.com/myriadsocial/myriad-contracts/near'
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = "4.0.0"
+num-traits = "0.2.14"
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+
+[workspace]
+members = []
