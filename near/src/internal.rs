@@ -147,12 +147,4 @@ impl TippingContract {
 
 		log!("{} has been claimed", reference);
 	}
-
-	pub(crate) fn assert_account_id(&self, account_id: &AccountId) {
-		let valid_account = env::is_valid_account_id(account_id.clone().as_bytes());
-
-		if !valid_account {
-			env::panic_str("AccountNotExist");
-		}
-	}
 }

@@ -1,6 +1,6 @@
 use crate::*;
 
-pub type ServerId = String;
+pub type ServerId = AccountId;
 pub type ReferenceType = String;
 pub type ReferenceId = String;
 pub type FtIdentifier = String;
@@ -10,13 +10,13 @@ pub type FtIdentifier = String;
 pub struct TipsBalanceKey(ServerId, ReferenceType, ReferenceId, FtIdentifier);
 impl TipsBalanceKey {
 	pub fn new(
-		server_id: &str,
+		server_id: &AccountId,
 		reference_type: &str,
 		reference_id: &str,
 		ft_identifier: &str,
 	) -> Self {
 		Self(
-			server_id.to_string(),
+			server_id.clone(),
 			reference_type.to_string(),
 			reference_id.to_string(),
 			ft_identifier.to_string(),
@@ -51,6 +51,14 @@ impl TipsBalance {
 
 	pub fn key(&self) -> TipsBalanceKey {
 		self.tips_balance_info.key()
+	}
+
+	pub fn get_reference_type(&self) -> &str {
+		self.get_tips_balance_info().get_reference_type()
+	}
+
+	pub fn get_reference_id(&self) -> &str {
+		self.get_tips_balance_info().get_reference_id()
 	}
 
 	pub fn get_ft_identifier(&self) -> &str {
@@ -101,13 +109,13 @@ pub struct TipsBalanceInfo {
 }
 impl TipsBalanceInfo {
 	pub fn new(
-		server_id: &str,
+		server_id: &AccountId,
 		reference_type: &str,
 		reference_id: &str,
 		ft_identifier: &str,
 	) -> Self {
 		Self {
-			server_id: server_id.to_string(),
+			server_id: server_id.clone(),
 			reference_type: reference_type.to_string(),
 			reference_id: reference_id.to_string(),
 			ft_identifier: ft_identifier.to_string(),
@@ -121,6 +129,10 @@ impl TipsBalanceInfo {
 			&self.reference_id,
 			&self.ft_identifier,
 		)
+	}
+
+	pub fn get_server_id(&self) -> &AccountId {
+		&self.server_id
 	}
 
 	pub fn get_reference_type(&self) -> &str {
@@ -150,9 +162,19 @@ impl TipsBalanceInfo {
 		format!("{}/{}", reference_type, reference_id)
 	}
 
+	pub fn set_server_id(mut self, server_id: &AccountId) -> Self {
+		self.server_id = server_id.to_owned();
+		self
+	}
+
 	pub fn set_reference(mut self, reference_type: &str, reference_id: &str) -> Self {
 		self.reference_type = reference_type.to_string();
 		self.reference_id = reference_id.to_string();
+		self
+	}
+
+	pub fn set_ft_identifier(mut self, ft_identifier: &str) -> Self {
+		self.ft_identifier = ft_identifier.to_string();
 		self
 	}
 }

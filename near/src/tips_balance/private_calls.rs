@@ -11,9 +11,6 @@ impl TippingContract {
 	) -> PromiseOrValue<U128> {
 		let ft_identifier = tips_balance_info.get_ft_id().expect("NotAnAccountId");
 
-		self.assert_account_id(&ft_identifier);
-		self.assert_account_id(&sender);
-
 		ft_contract::ext(ft_identifier)
 			.ft_metadata()
 			.then(Self::ext(env::current_account_id()).resolve_send_tip(
@@ -40,18 +37,26 @@ impl TippingContract {
 	}
 
 	#[private]
+	pub fn resolve_batch_claim_tip(&mut self, tips_balances: Vec<TipsBalance>) {
+		self.internal_resolve_batch_claim_tip(tips_balances);
+	}
+
+	#[private]
 	pub fn resolve_claim_reference(
 		&mut self,
-		tips_balance_info: TipsBalanceInfo,
-		reference_type: ReferenceType,
-		reference_id: ReferenceId,
-		account_id: AccountId,
+		secondary_key: TipsBalanceKey,
+		main_balance: TipsBalance,
+		native_tips_balance: Option<TipsBalance>,
 	) {
-		self.internal_resolve_claim_reference(
-			tips_balance_info,
-			reference_type,
-			reference_id,
-			account_id,
-		);
+		self.internal_resolve_claim_reference(secondary_key, main_balance, native_tips_balance);
+	}
+
+	#[private]
+	pub fn resolve_batch_claim_reference(
+		&mut self,
+		secondary_keys: Vec<TipsBalanceKey>,
+		main_balances: Vec<TipsBalance>,
+	) {
+		self.internal_resolve_batch_claim_reference(secondary_keys, main_balances);
 	}
 }
