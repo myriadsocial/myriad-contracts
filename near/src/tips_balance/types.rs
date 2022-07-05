@@ -185,6 +185,7 @@ pub struct TipsBalanceWithFormattedBalance {
 	pub tips_balance: TipsBalance,
 	pub symbol: String,
 	pub formatted_amount: String,
+	pub unclaimed_reference_ids: Vec<String>,
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
