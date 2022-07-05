@@ -38,6 +38,7 @@ mod tips_balance_tests {
 			tips_balance: expected_tips_balance,
 			symbol: String::from("NEAR"),
 			formatted_amount: String::from("0.1"),
+			unclaimed_reference_ids: Vec::new(),
 		};
 
 		assert_eq!(formatted_tips_balance, tips_balance);
