@@ -101,6 +101,7 @@ impl TippingContract {
 			.then(Self::ext(env::current_account_id()).resolve_batch_claim_tip(tips_balances));
 	}
 
+	#[payable]
 	pub fn claim_reference(
 		&mut self,
 		tips_balance_info: TipsBalanceInfo,
@@ -112,6 +113,7 @@ impl TippingContract {
 		let receiver = env::signer_account_id();
 		let tips_balance_info = tips_balance_info.set_server_id(&receiver);
 
+		assert_one_yocto();
 		assert!(receiver != account_id, "Unauthorized");
 
 		// Check near balance for tx fee
@@ -123,7 +125,9 @@ impl TippingContract {
 		});
 		let total_tip = native_tips_balance.get_amount();
 		let tx_fee = tx_fee.parse::<Balance>().expect("FailedParseTxFee");
-		let tx_fee = if total_tip >= tx_fee { tx_fee } else { 0 };
+
+		assert!(tx_fee > 0, "InsufficientTxFee");
+		assert!(total_tip >= tx_fee, "InsufficientTxFee");
 
 		// Calculate tips
 		let main_balance = self.calculate_tips(&tips_balance_info, &reference_type, &reference_id);
@@ -171,7 +175,9 @@ impl TippingContract {
 		});
 		let total_tip = native_tips.get_amount();
 		let tx_fee = tx_fee.parse::<Balance>().expect("FailedParseTxFee");
-		let tx_fee = if total_tip >= tx_fee { tx_fee } else { 0 };
+
+		assert!(tx_fee > 0, "InsufficientTxFee");
+		assert!(total_tip >= tx_fee, "InsufficientTxFee");
 
 		let (main_tip_balances, keys) = self.batch_calculate_tips(
 			&reference_type,
