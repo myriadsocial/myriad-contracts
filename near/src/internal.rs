@@ -116,14 +116,14 @@ impl TippingContract {
 				corrected_balance.push('.');
 				corrected_balance.push_str(balance_decimal);
 			} else {
-				corrected_balance.push_str("");
+				corrected_balance.push_str(".");
 			}
 
 			formatted.push_str(&balance.to_string()[0..corrected_decimal]);
 			formatted.push_str(corrected_balance.as_str());
 		}
 
-		formatted.trim_end_matches('0').to_string()
+		formatted.trim_end_matches('0').trim_end_matches('.').to_string()
 	}
 
 	pub(crate) fn tip_log(
