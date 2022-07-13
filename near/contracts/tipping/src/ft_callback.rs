@@ -10,7 +10,7 @@ trait FungibleTokenReceiver {
 }
 
 #[near_bindgen]
-impl FungibleTokenReceiver for TippingContract {
+impl FungibleTokenReceiver for Tipping {
 	fn ft_on_transfer(
 		&mut self,
 		sender_id: AccountId,

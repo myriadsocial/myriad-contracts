@@ -21,7 +21,7 @@ mod tips_balance_tests {
 		// Initialize contract
 		let mut context = get_context(accounts(1));
 		testing_env!(context.build());
-		let mut contract = TippingContract::new(None);
+		let mut contract = Tipping::new(None);
 
 		// Payload
 		let tips_balance_info = TipsBalanceInfo::new(&accounts(4), "user", "user_id", "native");
@@ -50,7 +50,7 @@ mod tips_balance_tests {
 		// Initialize contract
 		let mut context = get_context(accounts(1));
 		testing_env!(context.build());
-		let mut contract = TippingContract::new(None);
+		let mut contract = Tipping::new(None);
 
 		// Payload
 		let tips_balance_info =
@@ -67,7 +67,7 @@ mod tips_balance_tests {
 		// Initialize contract
 		let mut context = get_context(accounts(1));
 		testing_env!(context.build());
-		let mut contract = TippingContract::new(None);
+		let mut contract = Tipping::new(None);
 
 		// Payload
 		let tips_balance_info = TipsBalanceInfo::new(&accounts(4), "user", "user_id", "native");
@@ -83,7 +83,7 @@ mod tips_balance_tests {
 		// Initialize contract
 		let mut context = get_context(accounts(1));
 		testing_env!(context.build());
-		let mut contract = TippingContract::new(None);
+		let mut contract = Tipping::new(None);
 
 		// Payload
 		let tips_balance_info = TipsBalanceInfo::new(&accounts(4), "user", "user_id", "native");
@@ -103,7 +103,7 @@ mod tips_balance_tests {
 		// Initialize contract
 		let mut context = get_context(accounts(0));
 		testing_env!(context.build());
-		let mut contract = TippingContract::new(None);
+		let mut contract = Tipping::new(None);
 
 		// Payload
 		let tips_balance_info_1 = TipsBalanceInfo::new(&accounts(4), "user", "user_id", "native");
@@ -124,7 +124,7 @@ mod tips_balance_tests {
 		// Initialize contract
 		let mut context = get_context(accounts(1));
 		testing_env!(context.build());
-		let mut contract = TippingContract::new(None);
+		let mut contract = Tipping::new(None);
 
 		// Payload
 		let tips_balance_info = TipsBalanceInfo::new(&accounts(4), "user", "user_id", "native");

@@ -1,7 +1,7 @@
 use crate::*;
 
 #[near_bindgen]
-impl TippingContract {
+impl Tipping {
 	#[payable]
 	pub fn send_tip(&mut self, tips_balance_info: TipsBalanceInfo) {
 		let tip_amount = env::attached_deposit();

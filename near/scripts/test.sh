@@ -6,7 +6,7 @@ pushd .
 
 # The following line ensure we run from the project root
 PROJECT_ROOT=`git rev-parse --show-toplevel`
-cd $PROJECT_ROOT/near
+cd $PROJECT_ROOT/near/contracts/tipping
 
 echo "Check Code"
 cargo +nightly check --all

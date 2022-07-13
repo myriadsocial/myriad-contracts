@@ -1,11 +1,11 @@
 [package]
-name = "tipping-contract"
-version = "0.2.0"
+name = "tipping"
+version = "0.1.0"
 edition = "2021"
 license = 'AGPL-3.0'
-authors = ["Abdul Hakim <hakim@blocksphere.id>"]
+authors = ['Myriad Dev Team <myriad.dev@blocksphere.id>']
 homepage = 'https://myriad.social'
-repository = 'https://github.com/myriadsocial/myriad-contracts/near'
+repository = 'https://github.com/myriadsocial/myriad-contracts'
 
 [lib]
 crate-type = ["cdylib", "rlib"]
