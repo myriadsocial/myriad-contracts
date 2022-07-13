@@ -1,6 +1,6 @@
 use crate::*;
 
-impl TippingContract {
+impl Tipping {
 	pub(crate) fn transfer(
 		&mut self,
 		receiver: &AccountId,

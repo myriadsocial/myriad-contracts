@@ -1,7 +1,7 @@
 use crate::*;
 
 #[near_bindgen]
-impl TippingContract {
+impl Tipping {
 	pub fn get_tips_balance(
 		&self,
 		tips_balance_info: TipsBalanceInfo,

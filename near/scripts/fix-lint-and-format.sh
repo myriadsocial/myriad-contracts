@@ -6,7 +6,7 @@ pushd .
 
 # The following line ensure we run from the project root
 PROJECT_ROOT=`git rev-parse --show-toplevel`
-cd $PROJECT_ROOT/near
+cd $PROJECT_ROOT/near/contracts/tipping
 
 echo "Fix Lint"
 cargo +nightly clippy --all --fix --allow-dirty

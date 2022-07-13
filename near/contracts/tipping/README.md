@@ -61,7 +61,7 @@ fn send_tip(tips_balance_info: TipsBalanceInfo)
 #### Send Tip With Fungible Token (Use FT Address)
 ```rust
 fn ft_transfer_call(
-	receiver_id: AccountId, // TippingContract Address
+	receiver_id: AccountId, // Tipping Address
 	amount: String,
 	msg: String, // string of tips_balance_info
 )

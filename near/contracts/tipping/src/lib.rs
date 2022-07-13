@@ -23,14 +23,14 @@ use types::*;
 
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
-pub struct TippingContract {
+pub struct Tipping {
 	pub owner: AccountId,
 	pub tips_balances: UnorderedMap<TipsBalanceKey, TipsBalance>,
 	pub ft_identifiers: UnorderedMap<FtIdentifier, FtIdentifierInfo>,
 }
 
 #[near_bindgen]
-impl TippingContract {
+impl Tipping {
 	#[init]
 	pub fn new(ft_identifiers: Option<Vec<FtIdentifier>>) -> Self {
 		assert!(!env::state_exists(), "Already initialized");

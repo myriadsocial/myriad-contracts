@@ -1,6 +1,6 @@
 use crate::*;
 
-impl TippingContract {
+impl Tipping {
 	pub(crate) fn create_ft_identifier(
 		&mut self,
 		ft_identifier: &FtIdentifier,
@@ -116,7 +116,7 @@ impl TippingContract {
 				corrected_balance.push('.');
 				corrected_balance.push_str(balance_decimal);
 			} else {
-				corrected_balance.push_str(".");
+				corrected_balance.push('.');
 			}
 
 			formatted.push_str(&balance.to_string()[0..corrected_decimal]);

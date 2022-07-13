@@ -1,7 +1,7 @@
 use crate::*;
 
 #[near_bindgen]
-impl TippingContract {
+impl Tipping {
 	#[private]
 	pub fn send_tip_by_ft(
 		&mut self,
